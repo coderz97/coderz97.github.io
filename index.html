@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Lee — Data & AI Research</title>
+<meta name="description" content="Portfolio of Jordan Lee, Data & AI Researcher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#hero" class="logo">jordan<span class="logo-dot">.lee</span></a>
+    <nav class="cell-nav" aria-label="Section navigation">
+      <a href="#about"><span class="idx">01</span>About</a>
+      <a href="#experience"><span class="idx">02</span>Experience</a>
+      <a href="#projects"><span class="idx">03</span>Projects</a>
+      <a href="#skills"><span class="idx">04</span>Skills</a>
+      <a href="#contact"><span class="idx">05</span>Contact</a>
+    </nav>
+    <a class="resume-btn" href="assets/resume.pdf" download>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+      Resume
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="cell hero-cell">
+    <canvas id="scatter" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <p class="cell-label">[00] &nbsp;In&nbsp;[1]:&nbsp; whoami</p>
+      <h1 class="hero-title">Hi, I'm Jordan Lee.<br>I turn messy data into <span class="highlight">decisions people trust.</span></h1>
+
+      <p class="hypothesis">
+        <span class="h-tag">H₀:</span> good things happen at the intersection of data and curiosity.
+        <span class="strike">rejected</span>
+        <span class="scribble">p &lt; 0.001 — evidence is overwhelming</span>
+      </p>
+
+      <div class="status-row">
+        <span class="status-badge"><span class="dot"></span>open to opportunities</span>
+        <span class="status-meta">ML Research Engineer · 5 yrs exp · based in Austin, TX</span>
+      </div>
+
+      <div class="cta-row">
+        <a href="assets/resume.pdf" download class="btn btn-primary">Download résumé</a>
+        <a href="#projects" class="btn btn-ghost">See the work ↓</a>
+      </div>
+
+      <p class="arrow-note">try moving your cursor around ↖</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="cell">
+    <div class="cell-header">
+      <p class="cell-label">[01] &nbsp;In&nbsp;[2]:&nbsp; about.md</p>
+      <button class="toggle-btn" id="aboutToggle" aria-pressed="false">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">show raw</span>
+      </button>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="photo-frame">
+          <img src="assets/portrait.jpg" alt="Portrait of Jordan Lee" onerror="this.parentElement.classList.add('photo-fallback')">
+          <span class="photo-tag">fig. 1 — subject</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="rendered-view">
+          <p>I'm a machine learning research engineer who likes problems that don't have clean answers yet — forecasting under uncertainty, evaluating models that lie to you, building tools that make research reproducible instead of magical.</p>
+          <p>Over the last five years I've shipped models into production at two startups and a research lab, published on calibration and uncertainty estimation, and mentored a handful of junior researchers who are now doing better work than me.</p>
+          <p>Off the clock: rock climbing, terrible sourdough, and reading papers I'll never fully understand.</p>
+        </div>
+        <div class="raw-view">
+<pre># about.md
+name: Jordan Lee
+role: ML Research Engineer
+focus: [uncertainty estimation, forecasting, applied NLP]
+experience_years: 5
+currently: "open to full-time roles, research-adjacent"
+education: "M.S. Statistics, UT Austin"
+fun_fact: "once trained a model for 6 days only to beat it with a linear baseline"
+</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="cell">
+    <p class="cell-label">[02] &nbsp;In&nbsp;[3]:&nbsp; plot(career, x='year', y='impact')</p>
+    <p class="cell-sub">hover or tap a point for details</p>
+
+    <div class="chart-wrap">
+      <svg id="careerChart" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Career timeline chart showing growth in impact over time">
+        <!-- grid + axes drawn by JS -->
+      </svg>
+      <div class="tooltip" id="chartTooltip" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="cell">
+    <p class="cell-label">[03] &nbsp;In&nbsp;[4]:&nbsp; projects.sort(by='impact', reverse=True)</p>
+
+    <div class="card-grid">
+
+      <article class="index-card" style="--rot:-2deg">
+        <span class="card-pin"></span>
+        <p class="card-eyebrow">production ml</p>
+        <h3>Calibrated Demand Forecasting</h3>
+        <p>Rebuilt a retail forecasting pipeline to output honest prediction intervals instead of point estimates — cut over-ordering costs materially while keeping stockouts flat.</p>
+        <div class="card-tags"><span>PyTorch</span><span>Conformal Prediction</span><span>Airflow</span></div>
+        <p class="card-metric">↓ 18% inventory waste</p>
+        <a href="#" class="card-link">Read the writeup →</a>
+      </article>
+
+      <article class="index-card" style="--rot:1.5deg">
+        <span class="card-pin"></span>
+        <p class="card-eyebrow">research</p>
+        <h3>Are Your Model's Confidence Scores Lying?</h3>
+        <p>An open-source toolkit for auditing calibration in classification models, with visual diagnostics non-researchers can actually read.</p>
+        <div class="card-tags"><span>Python</span><span>scikit-learn</span><span>OSS</span></div>
+        <p class="card-metric">340★ on GitHub</p>
+        <a href="#" class="card-link">View repository →</a>
+      </article>
+
+      <article class="index-card" style="--rot:-1deg">
+        <span class="card-pin"></span>
+        <p class="card-eyebrow">applied nlp</p>
+        <h3>Support Ticket Triage Copilot</h3>
+        <p>Fine-tuned a small classifier + retrieval layer to route and draft responses for a 40-person support team, with a human-in-the-loop review step.</p>
+        <div class="card-tags"><span>Transformers</span><span>FastAPI</span><span>Postgres</span></div>
+        <p class="card-metric">−31% response time</p>
+        <a href="#" class="card-link">Case study →</a>
+      </article>
+
+      <article class="index-card" style="--rot:2deg">
+        <span class="card-pin"></span>
+        <p class="card-eyebrow">side project</p>
+        <h3>Sourdough Starter Health Tracker</h3>
+        <p>A tiny time-series model that predicts when my starter needs feeding, because apparently I'll build ML for anything.</p>
+        <div class="card-tags"><span>scikit-learn</span><span>Raspberry Pi</span></div>
+        <p class="card-metric">1 starter, still alive</p>
+        <a href="#" class="card-link">See it run →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="cell">
+    <p class="cell-label">[04] &nbsp;In&nbsp;[5]:&nbsp; skills.heatmap()</p>
+    <p class="cell-sub">darker = more confident</p>
+
+    <div class="skills-groups" id="skillsGroups">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="cell">
+    <p class="cell-label">[05] &nbsp;In&nbsp;[6]:&nbsp; contact.send(message)</p>
+
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm">
+        <label>
+          <span>Your name</span>
+          <input type="text" name="name" required placeholder="Ada Lovelace">
+        </label>
+        <label>
+          <span>Your email</span>
+          <input type="email" name="email" required placeholder="ada@example.com">
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required placeholder="Let's talk about..."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+
+      <div class="contact-side">
+        <p class="scribble-standalone">let's talk ↓</p>
+        <ul class="link-list">
+          <li><a href="mailto:jordan.lee@example.com">jordan.lee@example.com</a></li>
+          <li><a href="https://linkedin.com/in/example" target="_blank" rel="noopener">linkedin.com/in/example</a></li>
+          <li><a href="https://github.com/example" target="_blank" rel="noopener">github.com/example</a></li>
+          <li><a href="assets/resume.pdf" download>download résumé (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Built with HTML, CSS &amp; a bit too much SVG. Hosted on GitHub Pages.</p>
+  <p class="eof">// EOF</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
