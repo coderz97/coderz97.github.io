@@ -1,8 +1,9 @@
-# Jordan Lee — Portfolio
+# Sreya Tobji — Portfolio
 
-A single-page, interactive portfolio site built as a "lab notebook" — numbered
-cells, a hoverable career chart drawn like a training curve, and hand-scrawled
-margin notes. Pure HTML/CSS/JS, no build step, no framework.
+A single-page, warm and approachable portfolio site. Real content, a soft
+terracotta/sage/cream palette, a simple timeline for experience, and a
+highlights section for certifications, awards, and volunteering. Pure
+HTML/CSS/JS, no build step, no framework.
 
 ## Files
 
@@ -18,15 +19,13 @@ assets/      → put resume.pdf and portrait.jpg here
 Everything you'll want to change lives in three places:
 
 - **Text & links** — edit directly in `index.html`. Section by section:
-  hero headline, about bio, project cards, contact links.
-- **Career timeline** — edit the `CAREER_DATA` array at the top of `script.js`.
-  Each entry is `{ year, impact, role, company, note }`. `impact` is 0–100 and
-  controls the point's height on the chart — think of it loosely as
-  seniority/scope, not a real metric.
-- **Skills heatmap** — edit `SKILLS_DATA` in `script.js`. Each skill is
-  `[name, level]` where level is 1–5 and controls the color intensity.
+  hero headline, about bio, experience timeline, project cards, highlights,
+  contact links. The LinkedIn and GitHub links in Contact are placeholders —
+  search `placeholder-link` in `index.html` and swap in your real URLs.
+- **Skills** — edit the `SKILLS_DATA` array at the top of `script.js` to
+  add/remove/reorder skill tags by category.
 - **Colors & fonts** — edit the `:root` variables at the top of `style.css`
-  (`--coral`, `--blue`, `--paper`, etc.) and the Google Fonts `<link>` in
+  (`--terracotta`, `--sage`, `--cream`, etc.) and the Google Fonts `<link>` in
   `index.html` if you want different typefaces.
 
 ## 2. Add your assets
@@ -77,22 +76,18 @@ python3 -m http.server 8080
 
 ## Notes on the interactive bits
 
-- **Hero canvas**: a lightweight particle field that reacts to cursor
-  movement. Pure `<canvas>`, no libraries.
-- **Career chart**: hand-rolled SVG (no chart library) so it's easy to
-  restyle — look for `careerChart()` in `script.js`.
+- **Scroll reveal**: sections gently fade/rise into view as you scroll,
+  respecting `prefers-reduced-motion`.
 - **Contact form**: since GitHub Pages is static (no server), the form opens
   the visitor's email client via a `mailto:` link pre-filled with their
   message. If you want real form submissions without a backend, consider a
   service like Formspree or Getform and swap the `submit` handler in
   `script.js` for a `fetch()` call to their endpoint.
-- Respects `prefers-reduced-motion` and is keyboard-navigable (chart points
-  are focusable and show tooltips on focus).
 
 ## Ideas for next customization passes
 
-- Swap the hero "hypothesis" joke for something in your own voice
-- Add real project links/repos in the card `<a>` tags
-- Add a dark mode toggle (the CSS variables make this a fairly small change)
+- Add your real LinkedIn/GitHub URLs (currently placeholders in Contact)
+- Add real project repo links in the project cards
+- Add a couple of project screenshots or diagrams if you have them
 - Wire the contact form to Formspree for real submissions
-- Add a blog/notes section styled as additional notebook cells
+- Add a "Publications" or "Writing" section if that becomes relevant
